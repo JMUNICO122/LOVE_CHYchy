@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Monthsary</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="stars"></div>
+    
+    <!-- Audio Player (Background Music) -->
+    <audio id="backgroundMusic" loop>
+        <source src="hitslab-romantics-hopeful-love-romantic-music-292745.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Surprise Unlock Screen -->
+    <div class="unlock-screen" id="unlockScreen">
+        <div class="unlock-card">
+            <div class="lock-icon">🔒</div>
+            <h1>A Special Surprise For You</h1>
+            <p>This is a message from your love...</p>
+            <div class="unlock-input-group">
+                <input type="text" id="surprisePassword" placeholder="Enter a password to unlock" class="unlock-input" autocomplete="off">
+                <button class="btn btn-primary" onclick="unlockSurprise()">Unlock</button>
+            </div>
+            <p class="hint">Hint: It's a word that means "special" to us 💕</p>
+        </div>
+    </div>
+
+    <div class="container" id="mainContent" style="display: none;">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="title">💕 Our Love Story 💕</h1>
+            <p class="subtitle" id="headerSubtitle">Celebrating every moment with you</p>
+        </header>
+
+        <!-- Happy Monthsary Reveal Section -->
+        <section class="monthsary-section" id="monthsarySection" style="display: none;">
+            <div class="monthsary-title" id="monthsaryTitle">🎉 HAPPY MONTHSARY 🎉</div>
+            <div class="media-container" id="mediaContainer"></div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer" id="footerSection" style="display: none;">
+            <p>&copy; 2026 Our Love Story | Made with ❤️ for you</p>
+            <button class="btn-back" onclick="goBackToLock()">🔒 Back</button>
+        </footer>
+    </div>
+
+    <!-- Confetti Effect -->
+    <canvas id="confetti"></canvas>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,463 @@
+/* ==================== GLOBAL STYLES ==================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 50%, #6c5b7b 100%);
+    min-height: 100vh;
+    color: #333;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ==================== STARS BACKGROUND ==================== */
+.stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+.stars::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        radial-gradient(2px 2px at 20% 30%, #fff, transparent),
+        radial-gradient(2px 2px at 60% 70%, #fff, transparent),
+        radial-gradient(1px 1px at 50% 50%, #fff, transparent),
+        radial-gradient(1px 1px at 80% 10%, #fff, transparent),
+        radial-gradient(2px 2px at 10% 80%, #fff, transparent),
+        radial-gradient(1px 1px at 90% 60%, #fff, transparent),
+        radial-gradient(1px 1px at 30% 60%, #fff, transparent),
+        radial-gradient(1px 1px at 70% 40%, #fff, transparent),
+        radial-gradient(1px 1px at 40% 20%, #fff, transparent),
+        radial-gradient(2px 2px at 75% 75%, #fff, transparent);
+    background-size: 200% 200%;
+    animation: twinkle 5s ease-in-out infinite;
+    opacity: 0.5;
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.8; }
+}
+
+/* ==================== UNLOCK SCREEN ==================== */
+.unlock-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 50%, #6c5b7b 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.unlock-card {
+    background: white;
+    border-radius: 30px;
+    padding: 60px 40px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    max-width: 450px;
+    animation: scaleIn 0.6s ease-out;
+}
+
+.unlock-card h1 {
+    color: #c06c84;
+    font-size: 2.2rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.unlock-card > p {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    font-style: italic;
+}
+
+.lock-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    animation: bounce 2s infinite;
+}
+
+.unlock-input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.unlock-input {
+    flex: 1;
+    padding: 12px 20px;
+    border: 2px solid #ff6b9d;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.unlock-input:focus {
+    outline: none;
+    border-color: #c06c84;
+    box-shadow: 0 0 15px rgba(192, 108, 132, 0.4);
+}
+
+.hint {
+    color: #999;
+    font-size: 0.95rem;
+    margin-top: 20px;
+}
+
+/* ==================== MAIN CONTENT ==================== */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.header {
+    text-align: center;
+    color: white;
+    margin-bottom: 40px;
+    animation: slideDown 0.6s ease-out;
+}
+
+.title {
+    font-size: 3.5rem;
+    margin-bottom: 10px;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.4);
+    letter-spacing: 2px;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    opacity: 0.98;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.95);
+}
+
+/* ==================== MONTHSARY SECTION ==================== */
+.monthsary-section {
+    margin-bottom: 40px;
+    animation: slideUp 0.6s ease-out;
+}
+
+.monthsary-title {
+    font-size: 3.5rem;
+    color: white;
+    text-align: center;
+    margin-bottom: 60px;
+    font-weight: bold;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3),
+                 0 0 30px rgba(255, 105, 180, 0.6);
+    letter-spacing: 3px;
+    animation: titleBounce 0.8s ease-out;
+}
+
+.media-container {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    perspective: 1000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.media-item {
+    position: absolute;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.media-item:hover {
+    transform: scale(1.1) !important;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(255, 105, 180, 0.4);
+    z-index: 10;
+    border-color: rgba(255, 255, 255, 0.8);
+}
+
+.media-item img,
+.media-item video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ==================== BUTTON STYLES ==================== */
+.btn {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, #ff6b9d 0%, #c06c84 100%);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(255, 107, 157, 0.4);
+}
+
+.btn-secondary {
+    background: #f5f5f5;
+    color: #c06c84;
+    border: 2px solid #c06c84;
+}
+
+.btn-secondary:hover {
+    background: #c06c84;
+    color: white;
+}
+
+.btn-small {
+    padding: 8px 20px;
+    font-size: 0.9rem;
+}
+
+/* ==================== FOOTER ==================== */
+.footer {
+    text-align: center;
+    color: white;
+    margin-top: 60px;
+    padding-top: 30px;
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+    animation: slideUp 0.6s ease-out 0.2s both;
+}
+
+.footer p {
+    margin-top: 15px;
+    opacity: 0.9;
+}
+
+/* ==================== HEART POP ANIMATION ==================== */
+.heart-pop {
+    opacity: 0;
+    animation: heartPop 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation-delay: var(--stagger-delay, 0s);
+}
+
+@keyframes heartPop {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(-180deg);
+    }
+    70% {
+        opacity: 1;
+        transform: scale(1.15) rotate(8deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes titleBounce {
+    0% {
+        opacity: 0;
+        transform: scale(0.5) translateY(-50px);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes titleGlowPulse {
+    0% {
+        text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3),
+                     0 0 20px rgba(255, 105, 180, 0.4);
+        transform: scale(1);
+    }
+    50% {
+        text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3),
+                     0 0 40px rgba(255, 105, 180, 0.8);
+        transform: scale(1.05);
+    }
+    100% {
+        text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.3),
+                     0 0 20px rgba(255, 105, 180, 0.4);
+        transform: scale(1);
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/* ==================== CONFETTI CANVAS ==================== */
+#confetti {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 999;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2.5rem;
+    }
+
+    .monthsary-title {
+        font-size: 2.5rem;
+        margin-bottom: 40px;
+    }
+
+    .media-container {
+        height: 500px;
+    }
+
+    .media-item {
+        width: 90px !important;
+        height: 90px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 15px;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .monthsary-title {
+        font-size: 1.8rem;
+        margin-bottom: 30px;
+    }
+
+    .unlock-card {
+        padding: 40px 25px;
+        margin: 20px;
+    }
+
+    .unlock-card h1 {
+        font-size: 1.8rem;
+    }
+
+    .unlock-input-group {
+        flex-direction: column;
+    }
+
+    .media-container {
+        height: 400px;
+    }
+
+    .media-item {
+        width: 70px !important;
+        height: 70px !important;
+    }
+    .btn-back {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background: rgba(0,0,0,0.4);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    backdrop-filter: blur(10px);
+    cursor: pointer;
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.btn-back:hover {
+    background: rgba(255, 105, 180, 0.8);
+    transform: scale(1.05);
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .btn-back {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+}
+}
